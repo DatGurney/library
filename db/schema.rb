@@ -11,13 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718093942) do
+ActiveRecord::Schema.define(version: 20160718141525) do
 
-  create_table "books", force: true do |t|
-    t.string "author"
-    t.string "isbn"
-    t.string "name"
-    t.string "publisher"
+  create_table "books", force: :cascade do |t|
+    t.string "author",    limit: 255
+    t.string "isbn",      limit: 255
+    t.string "name",      limit: 255
+    t.string "publisher", limit: 255
+  end
+
+  create_table "loans", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "user_id"
+    t.date     "start_point"
+    t.date     "end_point"
+    t.float    "price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "loans", ["book_id"], name: "index_loans_on_book_id"
+  add_index "loans", ["user_id"], name: "index_loans_on_user_id"
+
+  create_table "settings", force: :cascade do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "date_of_birth"
+    t.string   "email"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "address_city"
+    t.string   "address_country"
+    t.string   "address_postcode"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
 end

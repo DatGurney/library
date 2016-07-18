@@ -1,0 +1,27 @@
+
+<p>
+  <strong>Book:</strong>
+  <%= @loan.book.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @loan.user %>
+</p>
+
+<p>
+  <strong>Start point:</strong>
+  <%= @loan.start_point %>
+</p>
+
+<p>
+  <strong>End point:</strong>
+  <%= @loan.end_point %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @loan.price %>
+</p>
+
+<%= link_to 'Back', loans_path, class: "btn btn-info" %>
