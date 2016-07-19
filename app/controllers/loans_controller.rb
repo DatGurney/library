@@ -4,7 +4,14 @@ class LoansController < ApplicationController
   # GET /loans
   # GET /loans.json
   def index
-    @loans = Loan.all
+    @loans = case params[:filter] 
+    when "active"
+      Loan.active
+    when "inactive"
+      Loan.past
+    else 
+      Loan.all
+    end
   end
 
   # GET /loans/1
@@ -15,7 +22,7 @@ class LoansController < ApplicationController
   # GET /loans/new
   def new
     default_price = Setting.find_by_name("default_loan_price").value
-    @loan = Loan.new(price: default_price)
+    @loan = Loan.new(price: default_price, user_id: params[:user_id], book_id: params[:book_id])
   end
 
   # GET /loans/1/edit
@@ -60,6 +67,13 @@ class LoansController < ApplicationController
       format.html { redirect_to loans_url, notice: 'Loan was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def has_loan?
+    if @user = User.find(book_id).count > 0
+      return true
+    else
+      return false
   end
 
   private

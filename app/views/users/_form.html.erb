@@ -1,6 +1,6 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation", class= "alert alert-danger">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
@@ -13,11 +13,11 @@
 
   <div class="form-group">
     <%= f.label :first_name %><br>
-    <%= f.text_field :first_name, class: "form-control" %>
+    <%= f.text_field :first_name, class: "form-control"%>
   </div>
   <div class="form-group">
     <%= f.label :last_name %><br>
-    <%= f.text_field :last_name, class: "form-control"  %>
+    <%= f.text_field :last_name, class: "form-control"%>
   </div>
   <div class="form-group">
     <%= f.label :date_of_birth %><br>
@@ -25,27 +25,27 @@
   </div>
   <div class="form-group">
     <%= f.label :email %><br>
-    <%= f.text_field :email, class: "form-control"  %>
+    <%= f.text_field :email, class: "form-control"%>
   </div>
   <div class="form-group">
     <%= f.label :address_line1 %><br>
-    <%= f.text_field :address_line1, class: "form-control"  %>
+    <%= f.text_field :address_line1, class: "form-control"%>
   </div>
   <div class="form-group">
     <%= f.label :address_line2 %><br>
-    <%= f.text_field :address_line2, class: "form-control"  %>
+    <%= f.text_field :address_line2, class: "form-control"%>
   </div>
   <div class="form-group">
     <%= f.label :address_city %><br>
-    <%= f.text_field :address_city, class: "form-control"  %>
+    <%= f.text_field :address_city, class: "form-control"%>
   </div>
   <div class="form-group">
     <%= f.label :address_country %><br>
-    <%= f.text_field :address_country, class: "form-control"  %>
+    <%= f.text_field :address_country, class: "form-control"%>
   </div>
   <div class="form-group">
     <%= f.label :address_postcode %><br>
-    <%= f.text_field :address_postcode, class: "form-control"  %>
+    <%= f.text_field :address_postcode, class: "form-control"%>
   </div>
   <div class="actions">
     <%= f.submit class: "btn btn-primary"%>

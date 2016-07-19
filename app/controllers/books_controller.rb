@@ -5,6 +5,9 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @all_loans = @book.loans
+    @active_loans = @book.loans.active
+    @past_loans = @book.loans.past
   end
 
   def new

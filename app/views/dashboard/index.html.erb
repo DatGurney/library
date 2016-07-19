@@ -1,0 +1,68 @@
+<div class="page-header">
+  <h1>Dashboard</h1>
+</div>
+
+
+<div class="row">
+
+	<div class="col-xs-5">
+		<div class="well well-lg">
+			<h2>Borrow a Book</h2>
+
+			<%= form_for @loan, url: submit_checkout_dashboard_path do |f| %>
+		  	<% if @loan.errors.any? %>
+		  	  <div id="error_explanation", class="alert alert-danger">
+		  	    <h2><%= pluralize(@loan.errors.count, "error") %> prohibited this loan from being saved:</h2>
+		
+		  	    <ul>
+		  	    <% @loan.errors.full_messages.each do |message| %>
+		  	      <li><%= message %></li>
+		  	    <% end %>
+		  	    </ul>
+		  	  </div>
+		  	<% end %>
+		
+		  	<div class="form-group">
+		  	  <%= f.label :book_id %><br>
+		  	  <%= f.select :book_id, Book.all.map {|i| [i.name, i.id]}, include_blank: true %>
+		  	</div>
+		  	<div class="form-group">
+		  	  <%= f.label :user_id %><br>
+		  	  <%= f.select :user_id, User.all.map {|i| [i.name, i.id]}, include_blank: true %>
+		  	</div>
+		  	<div class="actions">
+		  	  <%= f.submit class: "btn btn-warning" %>
+		  	</div>
+		  </div>
+			<% end %>
+
+	</div>
+	<div class="col-xs-5 col-xs-offset-1">
+		<div class="well well-lg">
+			<h2>Return a Book</h2>
+
+			<%= form_for @loan, url: submit_return_dashboard_path do |f| %>
+			  <% if @loan.errors.any? %>
+			    <div id="error_explanation", class="alert alert-danger">
+			      <h2><%= pluralize(@loan.errors.count, "error") %> prohibited this loan from being saved:</h2>
+
+			      <ul>
+			      <% @loan.errors.full_messages.each do |message| %>
+			        <li><%= message %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+
+			  <div class="form-group">
+			    <%= f.label :book_id %><br>
+			    <%= f.select :book_id, @books_on_loan.map {|i| [i.name, i.id]}, include_blank: true %>
+			  </div>
+			  <div class="actions">
+			    <%= f.submit "Return Book", class: "btn btn-warning" %>
+			  </div>
+			<% end %>
+		</div>
+		 <h4>Not already got a loan? Check out our great books in store <%= link_to "here", books_path %></h4>
+	</div>
+</div>

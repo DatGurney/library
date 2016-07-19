@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>First name:</strong>
   <%= @user.first_name %>
@@ -44,6 +42,28 @@
   <strong>Address postcode:</strong>
   <%= @user.address_postcode %>
 </p>
+
+<%= link_to "New Loan", new_loan_path(user_id: @user.id), class: "btn btn-info" %>
+
+<div>
+  <ul class="nav nav-tabs">
+    <li role="presentation"class="active"><a href="#all_loans" aria-controls="all_loans" role="tab" data-toggle="tab">All</a></li>
+    <li role="presentation"><a href="#active_loans" aria-controls="active_loans" role="tab" data-toggle="tab">Active</a></li>
+    <li role="presentation"><a href="#past_loans" aria-controls="past_loans" role="tab" data-toggle="tab">Inactive</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="all_loans">
+      <%= render '/loans/list', loans: @all_loans %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="active_loans">
+      <%= render '/loans/list', loans: @active_loans%>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="past_loans">
+      <%= render '/loans/list', loans: @past_loans %>
+    </div>
+  </div>
+
+</div>
 
 <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning" %> |
 <%= link_to 'Back', users_path, class: "btn btn-danger" %>

@@ -5,11 +5,23 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    
+    @loans = case params[:filter] 
+    when "active"
+      Loan.active
+    when "inactive"
+      Loan.past
+    else 
+      Loan.all
+    end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @all_loans = @user.loans
+    @active_loans = @user.loans.active
+    @past_loans = @user.loans.past
   end
 
   # GET /users/new
