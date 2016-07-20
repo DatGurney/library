@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718141525) do
+ActiveRecord::Schema.define(version: 20160720091754) do
 
   create_table "books", force: :cascade do |t|
     t.string "author",    limit: 255
@@ -26,8 +26,10 @@ ActiveRecord::Schema.define(version: 20160718141525) do
     t.date     "start_point"
     t.date     "end_point"
     t.float    "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.float    "fine_amount"
+    t.date     "fine_paid_on"
   end
 
   add_index "loans", ["book_id"], name: "index_loans_on_book_id"

@@ -43,7 +43,7 @@
   <%= @user.address_postcode %>
 </p>
 
-<%= link_to "New Loan", new_loan_path(user_id: @user.id), class: "btn btn-info" %>
+<%= link_to "New Loan", new_loan_path(user_id: @user.id), class: "btn btn-info" %>  
 
 <div>
   <ul class="nav nav-tabs">
@@ -54,6 +54,7 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="all_loans">
       <%= render '/loans/list', loans: @all_loans %>
+      <%= late = @is_late %>
     </div>
     <div role="tabpanel" class="tab-pane" id="active_loans">
       <%= render '/loans/list', loans: @active_loans%>
@@ -62,8 +63,8 @@
       <%= render '/loans/list', loans: @past_loans %>
     </div>
   </div>
-
 </div>
 
 <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning" %> |
 <%= link_to 'Back', users_path, class: "btn btn-danger" %>
+

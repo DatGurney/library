@@ -9,7 +9,7 @@ class BooksController < ApplicationController
     @active_loans = @book.loans.active
     @past_loans = @book.loans.past
   end
-
+  
   def new
     @book = Book.new
   end

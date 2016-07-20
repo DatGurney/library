@@ -1,8 +1,8 @@
 
 <h1>Listing Loans</h1>
-<%= link_to "all", loans_path%>
-<%= link_to "active", loans_path(filter: "active")%>
-<%= link_to "inactive", loans_path(filter: "inactive")%>
+<%= link_to "all", loans_path, class:"btn btn-info"%>
+<%= link_to "active", loans_path(filter: "active"), class: "btn btn-info"%>
+<%= link_to "inactive", loans_path(filter: "inactive"), class: "btn btn-info"%>
 
 <%= render 'list', loans: @loans %>
 

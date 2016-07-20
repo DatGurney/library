@@ -69,13 +69,6 @@ class LoansController < ApplicationController
     end
   end
 
-  def has_loan?
-    if @user = User.find(book_id).count > 0
-      return true
-    else
-      return false
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_loan
@@ -86,4 +79,5 @@ class LoansController < ApplicationController
     def loan_params
       params.require(:loan).permit(:book_id, :user_id, :start_point, :end_point, :price)
     end
+  
 end

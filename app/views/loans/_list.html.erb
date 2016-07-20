@@ -1,4 +1,4 @@
-<table class = "table table-striped">
+<table class = "table table">
   <thead>
     <tr>
       <th>Book</th>
@@ -6,22 +6,26 @@
       <th>Start point</th>
       <th>End point</th>
       <th>Price</th>
+      <th>Fine</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% loans.each do |loan| %>
-      <tr>
+      <tr class="<%= "alert alert-#{loan.css_state}" %>">
         <td><%= link_to loan.book.try(:name), loan.book %></td>
         <td><%= link_to loan.user.try(:name), loan.user %></td>
         <td><%= loan.start_point %></td>
         <td><%= loan.end_point %></td>
         <td><%= loan.price %></td>
-        <td><%= link_to 'Show', loan, class: "btn btn-info" %></td>
+        <td><%= loan.fine_amount %></td>
+        <td><%= link_to 'Show', loan, class: "btn btn-info" %></td>  
         <td><%= link_to 'Edit', edit_loan_path(loan), class: "btn btn-info" %></td>
         <td><%= link_to 'Destroy', loan, class: "btn btn-danger",method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= link_to "Repay Loan", dashboard_path, class: "btn btn-info" %>
+<p>&nbsp;</p> 
