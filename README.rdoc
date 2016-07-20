@@ -4,7 +4,11 @@ This Website Database was create whilst on Work experience with Documobi. This w
 
 == What the Library Does
 
-The Library is a database which can be used to help libraries store information about books, users, book loans and overdue books. With it you can create custom users which must have been validated by custom validation checks, such as email checking with regular expressions, making sure that all fields are filled in and that the user does not already exist. I also added a settings page in which fields like default_loan_price where able to be easily changed. The website kept a check on the loans which were currently active and added a table which colour coded the table to the suitable colour depending on whether an active book was overdue, a previous loan had been overdue etc
+The Library is a database which can be used to help libraries store information about books, users, book loans and overdue books. With it you can create custom users which must have been validated by custom validation checks, such as email checking with regular expressions, making sure that all fields are filled in and that the user does not already exist. I also added a settings page in which fields like default_loan_price where able to be easily changed. The website kept a check on the loans which were currently active and added a table which colour coded the table to the suitable colour depending on whether an active book was overdue, a previous loan had been overdue etc. 
+
+== What I Accomplished
+
+With this I managed to make custom functions which were used to set the fines, check whether, when returning a book, a fine is suitably paid out to the user, depending on how long the book is overdue
 
 * Ruby version
 
