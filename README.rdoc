@@ -15,9 +15,9 @@ I made use of Bootstrap 3 for the layout of the website, using the custom tables
 New books can be easily added to the in the books section, which validates ISBN number, author and book name.
 I also implemented a dashboard page, which is there to provide quick book loans which start on the day they're ordered. There is also a place to return books which have been taken out and not returned yet. When a book is taken out for rent by a user, the book becomes unavailable to all other users until the book is returned. If a book is withdrawn for more than the set amount of time in the settings menu, then the user will be fined.
 
-The User system lets you add users which validates the email with REGEX, the first name and last name for presence and that the birth date is not before the current day. The loans and fines are assigned to each individual person, so you can choose who has taken out the loan, how much they are paying for the book and which book they are taking out. You can also edit user information and remove them.
+The User system lets you add users, validates the email with REGEX, the first name and last name for presence and that the birth date is not before the current day. The loans and fines are assigned to each individual person, so you can choose who has taken out the loan, how much they are paying for the book and which book they are taking out. You can also edit user information and remove them.
 
-This website was completed in the week which I had work experience. I started this with no knoledge of either Ruby or HTML, having only previously known python and the basics of Java. This helped me to gain experience in the two languages which will be very useful for my future and will hopefully open up new options for future prospects.
+This website was completed in the week which I had work experience. I started this with no knowledge of either Ruby or HTML, having only previously known python and the basics of Java. This helped me to gain experience in the two languages which will be very useful for my future and will hopefully open up new options for future prospects.
 
 *On Ruby 2.1.5
 
