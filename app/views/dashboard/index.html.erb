@@ -9,13 +9,13 @@
 		<div class="well well-lg">
 			<h2>Borrow a Book</h2>
 
-			<%= form_for @loan, url: submit_checkout_dashboard_path do |f| %>
-		  	<% if @loan.errors.any? %>
+			<%= form_for @checkout_loan, url: submit_checkout_dashboard_path do |f| %>
+		  	<% if @checkout_loan.errors.any? %>
 		  	  <div id="error_explanation", class="alert alert-danger">
 		  	    <h2><%= pluralize(@loan.errors.count, "error") %> prohibited this loan from being saved:</h2>
 		
 		  	    <ul>
-		  	    <% @loan.errors.full_messages.each do |message| %>
+		  	    <% @checkout_loan.errors.full_messages.each do |message| %>
 		  	      <li><%= message %></li>
 		  	    <% end %>
 		  	    </ul>
@@ -41,13 +41,13 @@
 		<div class="well well-lg">
 			<h2>Return a Book</h2>
 
-			<%= form_for @loan, url: submit_return_dashboard_path do |f| %>
-			  <% if @loan.errors.any? %>
+			<%= form_for @return_loan, url: submit_return_dashboard_path do |f| %>
+			  <% if @return_loan.errors.any? %>
 			    <div id="error_explanation", class="alert alert-danger">
-			      <h2><%= pluralize(@loan.errors.count, "error") %> prohibited this loan from being saved:</h2>
+			      <h2><%= pluralize(@return_loan.errors.count, "error") %> prohibited this loan from being saved:</h2>
 
 			      <ul>
-			      <% @loan.errors.full_messages.each do |message| %>
+			      <% @return_loan.errors.full_messages.each do |message| %>
 			        <li><%= message %></li>
 			      <% end %>
 			      </ul>

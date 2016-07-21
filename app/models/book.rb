@@ -4,7 +4,7 @@ class Book < ActiveRecord::Base
 	validates :author, presence: true
 	validates :name, presence: true
 	validates :publisher, presence: true
-	validates :isbn, format: {with: /\d{10}/}
+	validates :isbn, format: {with: /\d{10}/}, uniqueness: true
 
 
 	before_validation :clean_isbn
