@@ -8,7 +8,12 @@ The Library is a database which can be used to help libraries store information 
 
 == What I Accomplished
 
-With this I managed to make custom functions which were used to set the fines, check whether, when returning a book, a fine is suitably paid out to the user, depending on how long the book is overdue
+With this I managed to make custom functions which were used to set the fines, check whether, when returning a book, a fine is suitably paid out to the user, depending on how long the book is overdue and what the daily fine price has been set at, which is configurable in the settings menu. 
+
+I made use of Bootstrap 3 for the layout of the website, using the custom tables and button themes provided and standard HTML formatting.
+
+New books can be easily added to the in the books section, which validates ISBN number, author and book name.
+I also implemented a dashboard page, which is there to provide quick book loans which start on the day they're ordered. There is also a place to retun books which have been taken out and not returned yet.
 
 * Ruby version
 
