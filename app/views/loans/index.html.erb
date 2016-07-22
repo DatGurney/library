@@ -1,5 +1,15 @@
 
 <h1>Listing Loans</h1>
+
+<h3><u><strong>Total Unpaid Fines:</strong> <%=number_to_currency Loan.unpaid_fines.sum(:fine_amount), unit: "£" %></u></h3>
+&nbsp;
+<h3><u>
+	<strong>Total Accruing Fines:</strong>
+	<%= number_to_currency Setting.find_by_name("fine_amount").value.to_f * Loan.active.overdue.to_a.sum{|i| i.overdue_by}, unit: "£" %>
+</u>
+</h3>
+<p></p>
+
 <%= link_to "all", loans_path, class:"btn btn-info"%>
 <%= link_to "active", loans_path(filter: "active"), class: "btn btn-info"%>
 <%= link_to "inactive", loans_path(filter: "inactive"), class: "btn btn-info"%>

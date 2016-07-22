@@ -21,7 +21,9 @@
         <td><%= loan.price %></td>
         <td>
         <% if !loan.paid? && loan.past? && loan.overdue? %>
-          <%= loan.fine_amount %> <%= button_to("Pay Now", loan_path(loan, loan: {fine_paid_on: Date.today}), class: "btn btn-info", method: :put)%>
+          <%= number_to_currency loan.fine_amount, unit: "£" %> <%= button_to("Pay Now", loan_path(loan, loan: {fine_paid_on: Date.today}), class: "btn btn-info", method: :put)%>
+        <% elsif loan.active? %>
+          Pending
         <% else %>
           Paid
         <% end %>

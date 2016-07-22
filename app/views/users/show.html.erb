@@ -43,6 +43,11 @@
   <%= @user.address_postcode %>
 </p>
 
+<p>
+  <strong>Total Fines:</strong>
+  <%= @user.loans.unpaid_fines.sum(:fine_amount) %>
+</p>
+
 <%= link_to "New Loan", new_loan_path(user_id: @user.id), class: "btn btn-info" %>  
 
 <div>
