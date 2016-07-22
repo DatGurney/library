@@ -1,6 +1,8 @@
 class DashboardController < ApplicationController
   def index
-  	index_info
+  	@checkout_loan = Loan.new
+  	@return_loan = Loan.new
+  	@books_on_loan = Book.on_loan
   end
 	
 	def submit_checkout
@@ -11,7 +13,7 @@ class DashboardController < ApplicationController
     if @checkout_loan.save
 			redirect_to dashboard_path, notice: 'Loan was successfully created.'
     else
-    	index_info
+    	@books_on_loan = Book.on_loan
       render :index
     end
 	end 
@@ -21,7 +23,7 @@ class DashboardController < ApplicationController
     if @return_loan.update(end_point: Date.today)
 			redirect_to dashboard_path, notice: 'Book was successfully returned.'
     else
-    	index_info
+    	@books_on_loan = Book.on_loan
       render :index
     end
 	end
