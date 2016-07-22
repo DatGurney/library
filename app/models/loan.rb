@@ -14,6 +14,7 @@ class Loan < ActiveRecord::Base
  	scope :active, -> { where(end_point: nil) }
  	scope :past, -> { where.not(end_point: nil) }
  	scope :fines, -> { where.not(fine_amount: nil)}
+ 	scope :unpaid_fines, -> { fines.where(fine_paid_on: nil) }
  	scope :overdue, -> { 
  		where("(end_point IS NOT NULL AND (end_point - start_point) > ?) OR (end_point IS NULL AND start_point < ?)", 
  			(Setting.find_by_name("max_loan_time").value.to_f),
@@ -24,7 +25,7 @@ class Loan < ActiveRecord::Base
  	after_validation :set_fine
 
 	def one_loan_per_book
-		if book.loans.active.count > 0
+		if book.present? && 	book.loans.active.count > 0
 			errors.add :book, "Cannot checkout a book already on loan"
 		end
 	end 
@@ -44,7 +45,7 @@ class Loan < ActiveRecord::Base
 	end
 
 	def no_active_fines
-		if user.present? && user.loans.overdue.active.count > 0
+		if user.present? && user.loans.unpaid_fines.count > 0
 			errors.add :user, 'User has active fines'
 		end
 	end
@@ -59,6 +60,10 @@ class Loan < ActiveRecord::Base
 
 	def past?
 		!active?
+	end
+
+	def paid?
+		fine_paid_on.present?
 	end
 
 	def css_state

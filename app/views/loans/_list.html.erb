@@ -19,7 +19,13 @@
         <td><%= loan.start_point %></td>
         <td><%= loan.end_point %></td>
         <td><%= loan.price %></td>
-        <td><%= loan.fine_amount %></td>
+        <td>
+        <% if !loan.paid? && loan.past? && loan.overdue? %>
+          <%= loan.fine_amount %> <%= button_to("Pay Now", loan_path(loan, loan: {fine_paid_on: Date.today}), class: "btn btn-info", method: :put)%>
+        <% else %>
+          Paid
+        <% end %>
+        
         <td><%= link_to 'Show', loan, class: "btn btn-info" %></td>  
         <td><%= link_to 'Edit', edit_loan_path(loan), class: "btn btn-info" %></td>
         <td><%= link_to 'Destroy', loan, class: "btn btn-danger",method: :delete, data: { confirm: 'Are you sure?' } %></td>
